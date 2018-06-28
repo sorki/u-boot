@@ -272,7 +272,7 @@ int menu_get_choice(struct menu *m, void **choice)
 	if (!m || !choice)
 		return -EINVAL;
 
-	if (!m->prompt)
+	if (!m->prompt || m->timeout == 0)
 		return menu_default_choice(m, choice);
 
 	return menu_interactive_choice(m, choice);
